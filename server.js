@@ -20,7 +20,7 @@ app.use((req,res,next)=>{
 
 //Index
 app.get('/logs',(req,res)=>{
-    res.render('Index')
+    res.render('logs/Index')
 })
 
 
@@ -41,9 +41,14 @@ app.get('/logs/new',(req,res)=>{
 
 //Create
 
-// app.post('/',(req,res)=>{
-//     res.send(req.body)
-// })
+app.post('/',(req,res)=>{
+    if(req.body.shipIsBroken==='on'){
+        req.body.shipIsBroken=true
+    }else{
+        req.body.shipIsBroken=false
+    }
+    // res.send(req.body)
+})
 
 
 //Edit
