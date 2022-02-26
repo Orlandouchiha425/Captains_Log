@@ -2,7 +2,7 @@ require('dotenv').config()
 console.log(process.env.MONGO_URI)
 const express=require('express')
 const app=express();
-const port=300;
+const port=3000;
 const Log =require('./models/logs')
 const mongoose=require('mongoose')
 
@@ -32,7 +32,7 @@ app.get('/logs',(req,res)=>{
         if(err){
             res.status(400).send(err)
         }else{
-            res.render('/Index',{
+            res.render('Index',{
                 logs:foundLogs
             })
         }
@@ -89,5 +89,5 @@ app.get('/logs/:id',(req,res)=>{
 
 //port
 app.listen(port,()=>{
-    console.log('i am listening')
+    console.log(`i am listening on ${port}`)
 })
