@@ -3,13 +3,19 @@ console.log(process.env.MONGO_URI)
 const express=require('express')
 const app=express();
 const port=300;
-const Log =require('./logs')
+const Log =require('./models/logs')
 const mongoose=require('mongoose')
 
 //Views
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
+
+//connect mongoose
+mongoose.connect(process.env.MONGO_URI,{
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
+})
 
 // MIDDLEWARE/definition: User sends request, Middleware runs between controller and callback functions
 app.use(express.urlencoded({extended:true}))
@@ -21,7 +27,18 @@ app.use((req,res,next)=>{
 
 //Index
 app.get('/logs',(req,res)=>{
-    res.render('logs/Index')
+    // res.render('logs/Index')
+    Log.find({}, (err, foundLogs)=>{
+        if(err){
+            res.status(400).send(err)
+        }else{
+            res.render('/Index',{
+                logs:foundLogs
+            })
+        }
+
+    })
+
 })
 
 

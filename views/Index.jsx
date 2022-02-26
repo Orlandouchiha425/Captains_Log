@@ -6,7 +6,7 @@ class Index extends React.Component{
         return(
             <div>
             <nav>
-                <a href="/">Go to Create a new Log</a>
+                <a href="/new">Go to Create a new Log</a>
             </nav>
             <ul>
                 {
