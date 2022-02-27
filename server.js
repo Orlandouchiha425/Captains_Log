@@ -25,6 +25,10 @@ app.use((req,res,next)=>{
 })
 
 
+
+app.use(methodOverride('_method'))
+
+
 //Index
 app.get('/logs',(req,res)=>{
     // res.render('logs/Index')
@@ -34,6 +38,7 @@ app.get('/logs',(req,res)=>{
         }else{
             res.render('Index',{
                 logs:foundLogs
+                
             })
         }
 
