@@ -5,9 +5,9 @@ class Show extends React.Component{
         const log=this.props.log
         return(
             <div>
-                <h1>This is the Show page for {log._id}</h1>
+                <h1>This is the Show page for {log.title}</h1>
 
-
+            <p>{log.entry}</p>
 
 
             </div>

@@ -5,7 +5,7 @@ const app=express();
 const port=3000;
 const Log =require('./models/logs')
 const mongoose=require('mongoose')
-
+const methodOverride=require('method-override')
 //Views
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
@@ -51,7 +51,15 @@ app.get('/logs/new',(req,res)=>{
 
 
 //Delete
-
+app.delete('/logs/:id',(req,res)=>{
+    Log.findByIdAndDelete(req.params.id,(err,deletedLog)=>{
+        if(!err){
+            res.redirect('/logs')
+        }else{
+            res.status(400).send(err)
+        }
+    })
+})
 
 //Update
 
@@ -59,12 +67,21 @@ app.get('/logs/new',(req,res)=>{
 
 //Create
 
-app.post('/',(req,res)=>{
+app.post('/logs',(req,res)=>{
     if(req.body.shipIsBroken==='on'){
         req.body.shipIsBroken=true
     }else{
         req.body.shipIsBroken=false
     }
+
+    Log.create(req.body,(err, createdLog)=>{
+        if(err){ 
+            res.status(400).send(err)
+        }else{ 
+            console.log(createdLog)
+            res.redirect('/logs')
+        }
+    })
     // res.send(req.body)
 })
 
@@ -79,7 +96,7 @@ app.get('/logs/:id',(req,res)=>{
         if (err){
             res.status(400).send(err)
         }else{
-            res.render('logs/Show',{
+            res.render('Show',{
                 log:foundLogs
             })
         }
