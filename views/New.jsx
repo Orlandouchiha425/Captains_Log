@@ -11,6 +11,7 @@ class New extends React.Component{
               Title Here:  <input name="title" type="text"/><br/>
               Entry Here:  <textarea name="entry" type="text"/><br/>
               Ship is Broken:  <input name='shipIsBroken' type="checkbox"/><br/>
+              Date: <input type="date"/><br/>
                 <input type='submit' value='Submit Log'/><br/>
 
             </form>

@@ -92,7 +92,23 @@ app.post('/logs',(req,res)=>{
 
 
 //Edit
-
+app.get('/logs/:id/edit',(req,res)=>{
+    if(req.body.shipIsBroken==='on'){
+        req.body.shipIsBroken=true
+    }else{
+        req.body.shipIsBroken=false
+    }
+    Log.findById(req.params.id,(err, foundLogs)=>{
+        if(err){
+            res.status(400).send(err)
+        }else{
+            res.render('edit',{
+                logs:foundLogs
+            })
+        }
+    })
+        
+})
 
 
 //Show
