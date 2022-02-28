@@ -30,7 +30,7 @@ app.use(methodOverride('_method'))
 
 
 //Index
-app.get('/logs',(req,res)=>{
+const index = app.get('/logs',(req,res)=>{
     // res.render('logs/Index')
     Log.find({}, (err, foundLogs)=>{
         if(err){
