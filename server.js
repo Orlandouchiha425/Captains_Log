@@ -24,13 +24,13 @@ app.use((req,res,next)=>{
     next()
 })
 
-
+app.use(express.static('public'));
 
 app.use(methodOverride('_method'))
 
 
 //Index
-const index = app.get('/logs',(req,res)=>{
+ app.get('/logs',(req,res)=>{
     // res.render('logs/Index')
     Log.find({}, (err, foundLogs)=>{
         if(err){

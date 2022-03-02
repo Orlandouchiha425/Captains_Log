@@ -5,7 +5,7 @@ class Index extends React.Component {
         const logs=this.props.logs
         return(
             <Default title="Index Page">
-            <div>
+            <div className='jumbotron'>
             
             <nav>
                 <a href="/logs/new">Go to Create a new Log</a><br/>

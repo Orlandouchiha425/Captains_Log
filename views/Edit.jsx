@@ -4,7 +4,10 @@ const Default= require('./layout/Default')
 class Edit extends React.Component{
     render(){
         return(
-            <Default title="Edit This Page">
+            <Default  title="Edit This Page">
+                <nav>
+                <a  href='/logs'>Go back to home screen</a>
+                </nav>
                 <form action={`/logs/${this.props.logs._id}?_method=PUT`} method='POST'>
                     Title: <input type="text" name='title' defaultValue={this.props.logs.title}/><br/>
                     Entry: <textarea type='text' name='entry' defaultValue={this.props.logs.entry}/><br/>
