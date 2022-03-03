@@ -4,7 +4,7 @@ class New extends React.Component{
     render(){
         return(
             <Default>
-            <div>
+            <div className='container jumbotron'>
                 <h1>Add to your Journal</h1>
                 <nav>
                     <a className="btn btn-primary" href="/logs">Go back to Index</a>

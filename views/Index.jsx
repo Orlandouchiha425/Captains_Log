@@ -5,16 +5,16 @@ class Index extends React.Component {
         const logs=this.props.logs
         return(
             <Default title="Index Page">
-            <div className='jumbotron'>
+            <div className='container'>
             
             <nav>
                 <a href="/logs/new">Go to Create a new Log</a><br/>
                 
             </nav>
-            <ul>
+            <ul className="list-group">
                 {
                     logs.map((log)=>{
-                       return( <li key={`${log._id}`}>
+                       return( <li className="list-group-item" key={`${log._id}`}>
                             <a href={`/logs/${log._id}`}>{log.title}</a>
                             <form action={`/logs/${log._id}?_method=DELETE`} method='POST'>
                                 <input type="submit" value={`DELETE ${log.title}`} />
